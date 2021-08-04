@@ -24,7 +24,9 @@ a {
 nav {
   width: 120px;
   background-color: #fff;
-  height: 100%;
+  height: auto;
+  position: sticky;
+  top: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
