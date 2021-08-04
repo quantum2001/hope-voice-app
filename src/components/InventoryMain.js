@@ -3,11 +3,11 @@ import { BsSearch } from 'react-icons/bs'
 import { BiX } from 'react-icons/bi'
 import { TiExport } from 'react-icons/ti'
 import { HiPlus } from 'react-icons/hi'
-import user from './images/user.png'
-import house from './images/house.png'
-import bell from './images/bell.png'
+import user from '../images/user.png'
+import house from '../images/house.png'
+import bell from '../images/bell.png'
 import BottomTab from './BottomTab'
-import { data as dd } from './data'
+import { data as dd } from '../data'
 import Product from './Product'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 
@@ -18,15 +18,19 @@ const InventoryMain = () => {
     const [currentTopTab, setCurrentTopTab] = useState(1)
     const [data, setData] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
+    const [allPageNumbers, setAllPageNumbers] = useState([])
+    const [outPageNumbers, setOutPageNumbers] = useState([])
+    const [misPageNumbers, setMisPageNumbers] = useState([])
     const maxPerPage = 10
-
     const maxPage = 5
+
 
     const listOfBottomTab = ['All', 'Power Tools', 'Fasteners', 'General Hardware', 'Hand Tools & Accessories', 'Locks & Locksets', 'Power Tool Accessories', 'Shelving Accessories']
 
     const changeTopTab = (newTab) => {
         setCurrentTopTab(newTab)
         setCurrentPage(1)
+
     }
     const updateSearch = (event) => {
         setSearch(event.target.value)
@@ -47,15 +51,14 @@ const InventoryMain = () => {
             return data.filter((item) => item.available !== 'Out of stock');
         }
     }
-    const pageNumbers = []
-    for (let i = 1; i <= Math.ceil(currentList().length / maxPerPage); i++) {
-        pageNumbers.push(i)
-    }
-    const pageNumbersToShow = pageNumbers.slice(currentPage < (pageNumbers.length - maxPage) ? currentPage - 1 : pageNumbers.length - (maxPage + 1), currentPage < (pageNumbers.length - maxPage) ? (currentPage + maxPage) - 1 : pageNumbers.length)
+    const currentPageList = (currentTopTab === 1) ? allPageNumbers : (currentTopTab === 2) ? outPageNumbers : misPageNumbers
+
+    const pageNumbersToShow = currentPageList.slice(Math.floor((currentPage % maxPage === 0 ? currentPage - 1 : currentPage) / maxPage) * maxPage, Math.floor(((currentPage % maxPage === 0 ? currentPage - 1 : currentPage) / maxPage)) * maxPage + maxPage)
+
     const itemsToShow = currentList().slice((currentPage - 1) * maxPerPage, currentPage * maxPerPage)
 
     const nextPageSession = () => {
-        setCurrentPage(currentPage < (pageNumbers.length - maxPage) ? currentPage + maxPage : currentPage + 1)
+        setCurrentPage(currentPage < (currentPageList.length - maxPage) ? currentPage + maxPage : currentPage + 1)
     }
 
     const prevPageSession = () => {
@@ -63,6 +66,29 @@ const InventoryMain = () => {
     }
     useEffect(() => {
         setData(dd)
+        setAllPageNumbers(() => {
+            let newA = []
+            for (let i = 1; i <= Math.ceil(dd.length / maxPerPage); i++) {
+                newA.push(i)
+            }
+            return [...newA]
+        })
+        setOutPageNumbers(() => {
+            let newA = []
+            let outOfStock = dd.filter((item) => item.available === 'Out of stock')
+            for (let i = 1; i <= Math.ceil(outOfStock.length / maxPerPage); i++) {
+                newA.push(i)
+            }
+            return [...newA]
+        })
+        setMisPageNumbers(() => {
+            let newA = []
+            let missingStock = dd.filter((item) => item.available !== 'Out of stock')
+            for (let i = 1; i <= Math.ceil(missingStock.length / maxPerPage); i++) {
+                newA.push(i)
+            }
+            return [...newA]
+        })
     }, [])
     return (
         <div className='main-container'>
@@ -134,6 +160,9 @@ const InventoryMain = () => {
 
                             }
                             {
+                                console.log(pageNumbersToShow, outPageNumbers)
+                            }
+                            {
 
                                 pageNumbersToShow.map((num) => {
                                     return <span onClick={() => setCurrentPage(num)} className={currentPage === num ? 'page-link page-link-active' : 'page-link'} key={num}>{num}</span>
@@ -141,10 +170,10 @@ const InventoryMain = () => {
 
                             }
                             {
-                                pageNumbersToShow[pageNumbersToShow.length - 1] === pageNumbers.length ? '' : <span className='page-link' onClick={nextPageSession}>...</span>
+                                pageNumbersToShow[pageNumbersToShow.length - 1] === currentPageList.length ? '' : <span className='page-link' onClick={nextPageSession}>...</span>
                             }
                             <HiChevronRight className='pages-icons' onClick={() => setCurrentPage(currentPage + 1)} />
-                            <input type='number' disabled='true' placeholder={pageNumbers.length} className='max' />
+                            <input type='number' disabled='true' placeholder={currentPageList.length} className='max' />
                         </div>
                     </div>
                 </div>

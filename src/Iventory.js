@@ -1,6 +1,5 @@
-import './inventory.css';
-import NavBar from './NavBar'
-import Main from './InventoryMain'
+import NavBar from './components/NavBar'
+import Main from './components/InventoryMain'
 
 function Iventory() {
   return (

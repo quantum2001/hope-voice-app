@@ -6,7 +6,7 @@ import { IoWalletOutline } from "react-icons/io5"
 import { BiUser } from "react-icons/bi"
 import { FaShuttleVan, FaTicketAlt } from "react-icons/fa"
 import { FiSettings } from "react-icons/fi"
-import logo from "./images/logo.png"
+import logo from "../images/logo.png"
 
 const NavBar = () => {
     const currentLocation = useLocation().pathname

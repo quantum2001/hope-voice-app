@@ -365,6 +365,7 @@ nav {
   font-size: 25px;
   color: var(--gray);
   padding: 0 10px;
+  cursor: pointer;
 }
 .page-link {
   display: flex;

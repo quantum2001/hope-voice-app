@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Iventory from './Iventory';
 import './inventory.css'
-import NavBar from './NavBar'
+import NavBar from './components/NavBar'
+import EditItem from './components/NavBar'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,8 +15,10 @@ ReactDOM.render(
             <NavBar />
           </div>
         </Route>
-        <Route path='/inventory'>
+        <Route exact path='/inventory'>
           <Iventory />
+        </Route>
+        <Route path='/inventory/edit/:id' children={<EditItem />}>
         </Route>
 
       </Switch>

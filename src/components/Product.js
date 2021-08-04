@@ -1,5 +1,5 @@
 import React from 'react'
-import bag from './images/bag.png'
+import bag from '../images/bag.png'
 import { BiShowAlt, BiTrash, BiPencil } from 'react-icons/bi'
 
 const Product = ({ id, name, available, price }) => {
