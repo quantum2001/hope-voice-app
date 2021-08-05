@@ -345,6 +345,9 @@ nav {
   padding: 10px;
   border: 1px;
   font-size: 16px;
+  text-decoration: none;
+  color: #3D4356;
+  display: block;
 }
 .action-button-center {
   border-left: 1px solid #E3E7ED;
@@ -390,4 +393,31 @@ nav {
   background-color: #fff;
   border-radius: 4px;
   height: 24px;
+}
+.go-back-link {
+  width: fit-content;
+  height: 35px;
+  border-radius: 6px;
+  background-color: #E3E7ED;
+  color: #3D4356;
+  display: flex;
+  align-items: center;
+
+}
+.go-back-container span {
+  font-size: 15px;
+  padding-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* Edit Inventory Item */
+.edit-item-container {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  padding: 15px;
+  box-sizing: border-box;
+  border-radius: 6px;
 }

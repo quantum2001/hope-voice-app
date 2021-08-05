@@ -3,9 +3,7 @@ import { BsSearch } from 'react-icons/bs'
 import { BiX } from 'react-icons/bi'
 import { TiExport } from 'react-icons/ti'
 import { HiPlus } from 'react-icons/hi'
-import user from '../images/user.png'
-import house from '../images/house.png'
-import bell from '../images/bell.png'
+import TopNav from './TopNav'
 import BottomTab from './BottomTab'
 import { data as dd } from '../data'
 import Product from './Product'
@@ -92,16 +90,7 @@ const InventoryMain = () => {
     }, [])
     return (
         <div className='main-container'>
-            <div className='main-top-nav'>
-                <div className='top-nav-item'>
-                    <p>The Hardware City</p>
-                    <div className='top-nav-links'>
-                        <img src={house} alt=''></img>
-                        <img src={bell} alt=''></img>
-                        <img src={user} alt=''></img>
-                    </div>
-                </div>
-            </div>
+            <TopNav />
             <div className='main-content'>
 
                 <h1>Inventory</h1>

@@ -1,11 +1,14 @@
 import React from 'react'
 import NavBar from './NavBar'
-import { Link, useParams } from 'react-router-dom'
+import EditItemMain from './EditItemMain'
 
 const EditItem = () => {
     return (
         <div className='container'>
+
             <NavBar />
+            <EditItemMain />
+
         </div>
     );
 }

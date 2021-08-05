@@ -1,6 +1,7 @@
 import React from 'react'
 import bag from '../images/bag.png'
 import { BiShowAlt, BiTrash, BiPencil } from 'react-icons/bi'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Product = ({ id, name, available, price }) => {
     return (
@@ -12,9 +13,15 @@ const Product = ({ id, name, available, price }) => {
             <div className='p-price'><p>${price}</p></div>
             <div className='p-action'>
                 <div className='action-button-container'>
-                    <BiTrash className='action-button' />
-                    <BiPencil className='action-button action-button-center' />
-                    <BiShowAlt className='action-button' />
+                    <Link to={`/inventory/delete/${id}`} className='action-button'>
+                        <BiTrash className='action-button' />
+                    </Link>
+                    <Link to={`/inventory/edit/${id}`} className='action-button action-button-center'>
+                        <BiPencil />
+                    </Link>
+                    <Link to={`/inventory/view/${id}`} className='action-button'>
+                        <BiShowAlt className='action-button' />
+                    </Link>
                 </div>
             </div>
         </div>
