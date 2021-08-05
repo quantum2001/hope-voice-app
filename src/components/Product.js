@@ -14,13 +14,13 @@ const Product = ({ id, name, available, price }) => {
             <div className='p-action'>
                 <div className='action-button-container'>
                     <Link to={`/inventory/delete/${id}`} className='action-button'>
-                        <BiTrash className='action-button' />
+                        <BiTrash className='action-icon' />
                     </Link>
                     <Link to={`/inventory/edit/${id}`} className='action-button action-button-center'>
-                        <BiPencil />
+                        <BiPencil className='action-icon' />
                     </Link>
                     <Link to={`/inventory/view/${id}`} className='action-button'>
-                        <BiShowAlt className='action-button' />
+                        <BiShowAlt className='action-icon' />
                     </Link>
                 </div>
             </div>

@@ -342,7 +342,7 @@ nav {
   border-radius: 6px;
 }
 .action-button {
-  padding: 10px;
+  padding: 8px;
   border: 1px;
   font-size: 16px;
   text-decoration: none;
@@ -353,6 +353,9 @@ nav {
   border-left: 1px solid #E3E7ED;
   border-right: 1px solid #E3E7ED;
   
+}
+.action-icon {
+  padding: 0;
 }
 .pages-container {
   display: flex;
