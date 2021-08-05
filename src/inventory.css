@@ -347,7 +347,9 @@ nav {
   font-size: 16px;
   text-decoration: none;
   color: #3D4356;
-  display: block;
+  text-align: center;
+  display: flex;
+  align-items: center;
 }
 .action-button-center {
   border-left: 1px solid #E3E7ED;
