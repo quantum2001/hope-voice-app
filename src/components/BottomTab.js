@@ -6,19 +6,19 @@ const BottomTab = ({ tab }) => {
     const changeTab = (newTab) => {
         setCurrentTab(newTab)
     }
-    // const nextTab = () => {
-    //     if (currentTab < tab.length - 1) {
-    //         setCurrentTab(currentTab + 1)
-    //     }
-    // }
-    // const prevTab = () => {
-    //     if (currentTab > 0) {
-    //         setCurrentTab(currentTab - 1)
-    //     }
-    // }
+    const nextTab = () => {
+        if (currentTab < tab.length - 1) {
+            setCurrentTab(currentTab + 1)
+        }
+    }
+    const prevTab = () => {
+        if (currentTab > 0) {
+            setCurrentTab(currentTab - 1)
+        }
+    }
     return (
         <div className='bottom-tab'>
-            <button><HiChevronLeft /></button>
+            <button onClick={prevTab}><HiChevronLeft /></button>
             <div className='bottom-tab-container'>
                 {
                     tab.map((tab, index) => {
@@ -29,7 +29,7 @@ const BottomTab = ({ tab }) => {
                 }
 
             </div>
-            <button><HiChevronRight /></button>
+            <button onClick={nextTab}><HiChevronRight /></button>
         </div>
     )
 }
